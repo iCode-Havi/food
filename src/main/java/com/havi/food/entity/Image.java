@@ -12,14 +12,9 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-public class Food {
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long imageUrl;
-    private Integer imageCount;
-    private LocalDateTime addedTime;
-    private Integer quantity;
-    private LocalDateTime canceledTime;
-    private String availableStatus;
+    private String ImageUrl;
 }

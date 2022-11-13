@@ -7,10 +7,7 @@ import java.time.LocalDateTime;
 public class FoodArea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String type;
-    private String description;
-    private LocalDateTime timePeriod;
-    private Integer availableQuantity;
+    private Long FoodTypeId;
+    private Integer AreaQuantity;
 
 }

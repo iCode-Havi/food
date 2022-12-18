@@ -1,22 +1,24 @@
 package com.havi.food.entity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Getter
 @Setter
+@Table(name = "area")
 public class Area {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long areaId;
     private String District;
     private String Name;
 
+    @OneToMany(mappedBy = "area", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    Set<FoodTypeArea> foodTypeAreas = new HashSet<>();
 
 }

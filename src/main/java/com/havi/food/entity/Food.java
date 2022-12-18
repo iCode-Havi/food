@@ -1,25 +1,30 @@
 package com.havi.food.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long imageUrl;
+    private Long foodId;
+    private String imageUrl;
     private Integer imageCount;
     private LocalDateTime addedTime;
     private Integer quantity;
     private LocalDateTime canceledTime;
     private String availableStatus;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, optional = false)
+    @JoinColumn(name = "food_type_id", foreignKey = @ForeignKey(name = "food_fk1_food_type_id"))
+    FoodType foodType;
 }

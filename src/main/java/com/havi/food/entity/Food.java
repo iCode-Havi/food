@@ -24,6 +24,8 @@ public class Food {
     private LocalDateTime canceledTime;
     private String availableStatus;
 
+    private Long farmerId;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "food_type_id", foreignKey = @ForeignKey(name = "food_fk1_food_type_id"))
     FoodType foodType;
